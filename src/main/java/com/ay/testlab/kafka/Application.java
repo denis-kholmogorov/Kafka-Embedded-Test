@@ -1,9 +1,6 @@
 package com.ay.testlab.kafka;
 
-import com.ay.testlab.kafka.batchlistener.BatchMessageConsumingExample;
-import com.ay.testlab.kafka.multipartition.MultiPartitionMessagingExample;
 import com.ay.testlab.kafka.simplemessage.SimpleKafkaMessagingExample;
-import com.ay.testlab.kafka.streamapi.KafkaStreamExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,24 +18,11 @@ public class Application {
     @Autowired
     private SimpleKafkaMessagingExample simpleKafkaMessagingExample;
 
-    @Autowired
-    private MultiPartitionMessagingExample multiPartitionMessagingExample;
-
-    @Autowired
-    private BatchMessageConsumingExample batchMessageConsumingExample;
-
-    @Autowired
-    private KafkaStreamExample kafkaStreamExample;
-
     @Bean
     @Profile("!test")
     public CommandLineRunner batchMessageConsumerRunner() {
         return args -> {
-            //Just comment out the examples to run
-            //simpleKafkaMessagingExample.execute();
-            //multiPartitionMessagingExample.execute();
-            //batchMessageConsumingExample.execute();
-            //kafkaStreamExample.execute();
+            simpleKafkaMessagingExample.execute();
         };
     }
 }

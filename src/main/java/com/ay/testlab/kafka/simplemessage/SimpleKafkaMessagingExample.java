@@ -18,14 +18,21 @@ public class SimpleKafkaMessagingExample {
     @Autowired
     private SimpleKafkaMessageProducer sender;
 
+    @Autowired
+    private SimpleKafkaMessageConsumer consumer;
+
     @Value("${kafka.topic.simpleMessageTopic}")
     private String topicName;
 
-    public void execute() {
+    public void execute() throws InterruptedException {
         LOGGER.info("SimpleKafkaMessagingExample is executing...");
-        for (int i = 0; i < 100; ++i) {
-            sender.send(topicName, "SimpleKafkaMessaging - Message No = " + i);
-        }
+            sender.send(topicName, "SimpleKafkaMessaging - Message No = 1");
+            Thread.sleep(1000);
+            read();
+    }
+    public void read(){
+        LOGGER.info("Reading");
+        consumer.message();
     }
 
     @Bean

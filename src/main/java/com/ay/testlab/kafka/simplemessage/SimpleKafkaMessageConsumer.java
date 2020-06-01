@@ -17,5 +17,8 @@ public class SimpleKafkaMessageConsumer {
     }
 
     //added for testing purpose
-    public String message(){return this.message;}
+    public String message(){
+        LOGGER.info("Message has read " + this.message);
+        return this.message;
+    }
 }

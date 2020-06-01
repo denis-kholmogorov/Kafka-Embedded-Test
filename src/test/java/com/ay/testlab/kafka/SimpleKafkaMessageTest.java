@@ -40,4 +40,9 @@ public class SimpleKafkaMessageTest {
         TimeUnit.SECONDS.sleep(1);
         Assert.assertEquals("test Message", consumer.message());
     }
+
+    @Test
+    public void testReceive() throws Exception {
+        Assert.assertEquals("test Message", consumer.message());
+    }
 }
