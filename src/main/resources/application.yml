@@ -2,7 +2,3 @@ kafka:
   bootstrap-servers: localhost:9092
   topic:
     simpleMessageTopic: kafkaSimpleMessageTopic
-    multiPartitionTopic: kafkaMultiPartitionTopic
-    batchConsumerTopic: kafkaBatchConsumerTopic
-    streamRawDataTopic: kafkaStreamRawDataTopic
-    streamProcessedDataTopic: kafkaStreamProcessedDataTopic

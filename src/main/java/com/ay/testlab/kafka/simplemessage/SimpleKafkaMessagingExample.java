@@ -1,5 +1,6 @@
 package com.ay.testlab.kafka.simplemessage;
 
+import com.ay.testlab.kafka.dto.Car;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,13 @@ public class SimpleKafkaMessagingExample {
 
     public void execute() throws InterruptedException {
         LOGGER.info("SimpleKafkaMessagingExample is executing...");
-            sender.send(topicName, "SimpleKafkaMessaging - Message No = 1");
+            sender.send(topicName, new Car("Blue", 4 , 150));
             Thread.sleep(1000);
             read();
     }
     public void read(){
         LOGGER.info("Reading");
+
         consumer.message();
     }
 

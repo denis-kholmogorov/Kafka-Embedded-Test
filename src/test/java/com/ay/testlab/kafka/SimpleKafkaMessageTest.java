@@ -1,5 +1,6 @@
 package com.ay.testlab.kafka;
 
+import com.ay.testlab.kafka.dto.Car;
 import com.ay.testlab.kafka.simplemessage.SimpleKafkaMessageConsumer;
 import com.ay.testlab.kafka.simplemessage.SimpleKafkaMessageProducer;
 import org.junit.Assert;
@@ -36,13 +37,17 @@ public class SimpleKafkaMessageTest {
 
     @Test
     public void testSendReceive() throws Exception {
-        sender.send(topicName, "test Message");
+        sender.send(topicName, new Car("Red", 2, 250));
         TimeUnit.SECONDS.sleep(1);
-        Assert.assertEquals("test Message", consumer.message());
+        Assert.assertEquals("2", consumer.message().getCountDoors().toString());
     }
 
     @Test
     public void testReceive() throws Exception {
-        Assert.assertEquals("test Message", consumer.message());
+        sender.send(topicName, new Car("Green", 4, 80));
+        TimeUnit.SECONDS.sleep(1);
+        Assert.assertEquals("Green", consumer.message().getColor());
     }
+
+
 }
